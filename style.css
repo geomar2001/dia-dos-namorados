@@ -83,3 +83,30 @@ h1 {
   color: #fff;
   text-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+#audio-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0,0,0,0.6);
+  padding: 10px 15px;
+  border-radius: 10px;
+  z-index: 100;
+}
+
+#audio-player button {
+  background: #fff;
+  color: #f2709c;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background 0.3s, transform 0.2s;
+}
+
+#audio-player button:hover {
+  background: #f2709c;
+  color: #fff;
+  transform: scale(1.05);
+}

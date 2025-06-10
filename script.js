@@ -21,23 +21,38 @@ function atualizarTempo() {
     `Estamos juntos há ${anos} ano(s), ${dias} dia(s), ${horas}h ${minutos}min ${segundos}s 💞`;
 }
 
+// 🎠 Controle do carrossel de imagens
+let current = 0;
+const imgs = document.querySelectorAll('.carousel img');
 
-  let current = 0;
-  const imgs = document.querySelectorAll('.carousel img');
+function nextSlide() {
+  imgs[current].classList.remove('active');
+  current = (current + 1) % imgs.length;
+  imgs[current].classList.add('active');
+}
 
-  function nextSlide() {
-    imgs[current].classList.remove('active');
-    current = (current + 1) % imgs.length;
-    imgs[current].classList.add('active');
-  }
+imgs[0].classList.add('active');
+setInterval(nextSlide, 4000);
 
-  imgs[0].classList.add('active'); // Ativa a primeira
-  setInterval(nextSlide, 4000); // Troca a cada 4s
+// 🎶 Controle do áudio
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById('audio');
+  const playPauseBtn = document.getElementById('playPauseBtn');
 
+  playPauseBtn.addEventListener('click', () => {
+    if (audio.paused) {
+      audio.play();
+      playPauseBtn.textContent = '⏸️ Pausar Música';
+    } else {
+      audio.pause();
+      playPauseBtn.textContent = '▶️ Tocar Música';
+    }
+  });
 
-
-document.getElementById("iniciar").addEventListener("click", function () {
-  document.getElementById("iniciar").style.display = "none";
-  atualizarTempo();
-  setInterval(atualizarTempo, 1000);
+  // 🟢 Início do contador quando clicar em "Iniciar"
+  document.getElementById("iniciar").addEventListener("click", () => {
+    document.getElementById("iniciar").style.display = "none";
+    atualizarTempo();
+    setInterval(atualizarTempo, 1000);
+  });
 });
